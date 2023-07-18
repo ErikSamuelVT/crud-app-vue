@@ -19,14 +19,18 @@ function deleteTask(id) {
 function editTask(id) {
   isEditing = true
   idEditTask = id
-  const currentTask = tasks.value.filter(tsk => tsk.id === id) // Buscar tarea
-  task.value = currentTask[0].text //Colocamos el valor actual del texto en el input
+  const currentTask = tasks.value.filter(tsk => tsk.id === id)
+  task.value = currentTask[0].text
 
 }
 
 function updateTask() {
   isEditing = false
-  const editedTask = tasks.value.map(tsk => tsk.id === idEditTask ? { "id": idEditTask, "text": task.value } : tsk)
+  const editedTask = tasks.value.map(
+    tsk => tsk.id === idEditTask ?
+      { "id": idEditTask, "text": task.value } :
+      tsk
+  )
   tasks.value = editedTask
   task.value = ''
 
